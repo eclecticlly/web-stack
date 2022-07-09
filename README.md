@@ -6,16 +6,16 @@
   <!-- <a href="https://template.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">Template</h1>
+<h1 align="center">Web Template</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/eclecticlly/template?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/eclecticlly/web-stack?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/eclecticlly/template?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/eclecticlly/web-stack?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/eclecticlly/template?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/eclecticlly/web-stack?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/eclecticlly/template?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/eclecticlly/web-stack?color=56BEB8">
 
   <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/eclecticlly/template?color=56BEB8" /> -->
 
@@ -26,7 +26,7 @@
 
 <!-- Status -->
 
-<!-- <h4 align="center"> 
+<h4 align="center"> 
 	🚧  Template 🚀 Under construction...  🚧
 </h4> 
 
@@ -46,44 +46,50 @@
 
 ## :dart: About ##
 
-Describe your project
+A starting template to work on web projects: webapps, wepsites or apis
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: Easy development workflow with Air;\
+:heavy_check_mark: Authentication out of the box;\
+:heavy_check_mark: Postgres and GORM;\
+:heavy_check_mark: Jet Template and Tailwind;
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+- [Go](https://go.dev/)
+- [Fiber](https://gofiber.io/)
+- [GORM](https://gorm.io/index.html)
+- [Jet Template Engine](https://github.com/CloudyKit/jet/)
+- [Tailwind](https://tailwindcss.com/)
+- [xtmx](https://htmx.org/)
 
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [Tailwind standalone CLI](), [Make (pay attantion on Windows)](http://gnuwin32.sourceforge.net/) and [Air](https://github.com/cosmtrek/air) installed.
 
 ## :checkered_flag: Starting ##
 
+[Use as a template](https://github.com/eclecticlly/web-stack/generate)
+
 ```bash
-# Clone this project
-$ git clone https://github.com/eclecticlly/template
+# Clone the generate repository
+$ git clone https://github.com/[yourgithubname]/[yourepository]
 
 # Access
-$ cd template
+$ cd [yourepository]
 
-# Install dependencies
-$ yarn
+# Create a postgres database
+createdb [databasename]
 
-# Run the project
-$ yarn start
+# Create the env file and fill in the blanks
+$ mv .env-example .env
 
-# The server will initialize in the <http://localhost:3000>
+# Development mode for windows
+$ start air ;; start tailwindcss "-i ./tailwind.css -o ./assets/styles.css --watch"
+
 ```
 
 ## :memo: License ##
