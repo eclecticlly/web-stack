@@ -30,7 +30,7 @@
 	🚧  Template 🚀 Under construction...  🚧
 </h4> 
 
-<hr> -->
+<hr>
 
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
@@ -73,6 +73,7 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [
 ## :checkered_flag: Starting ##
 
 [Use as a template](https://github.com/eclecticlly/web-stack/generate)
+Uncomment the line for you OS in Makefile
 
 ```bash
 # Clone the generate repository
@@ -87,8 +88,8 @@ createdb [databasename]
 # Create the env file and fill in the blanks
 $ mv .env-example .env
 
-# Development mode for windows
-$ start air ;; start tailwindcss "-i ./tailwind.css -o ./assets/styles.css --watch"
+# Start in Development mode
+$ make dev
 
 ```
 
