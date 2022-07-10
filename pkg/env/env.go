@@ -17,6 +17,7 @@ func GetEnv(key, def string) string {
 
 func SetupEnvFile() {
 	env := GetEnv("APP_ENV", "")
+	println("Environment:", env)
 	if env == "" {
 		err := godotenv.Load()
 		if err != nil {

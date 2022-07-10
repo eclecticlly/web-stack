@@ -5,6 +5,7 @@ import (
 	"eclecticlly/web-stack/pkg/env"
 	"eclecticlly/web-stack/pkg/router"
 	"fmt"
+	"net/http"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -16,7 +17,7 @@ import (
 func NewApplication() *fiber.App {
 	env.SetupEnvFile()
 	database.SetupDatabase()
-	engine := jet.New("./views", ".jet")
+	engine := jet.NewFileSystem(http.Dir("./views"), ".jet")
 
 	app := fiber.New(fiber.Config{
 		ErrorHandler: func(ctx *fiber.Ctx, err error) error {
