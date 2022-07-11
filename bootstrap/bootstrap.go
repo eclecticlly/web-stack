@@ -21,22 +21,17 @@ func NewApplication() *fiber.App {
 
 	app := fiber.New(fiber.Config{
 		ErrorHandler: func(ctx *fiber.Ctx, err error) error {
-			// Status code defaults to 500
 			code := fiber.StatusInternalServerError
 
-			// Retrieve the custom status code if it's an fiber.*Error
 			if e, ok := err.(*fiber.Error); ok {
 				code = e.Code
 			}
 
-			// Send custom error page
-			err = ctx.Status(code).SendFile(fmt.Sprintf("./%d.html", code))
+			err = ctx.Status(code).SendFile(fmt.Sprintf("views/%d.html", code))
 			if err != nil {
-				// In case the SendFile fails
 				return ctx.Status(fiber.StatusInternalServerError).SendString("Internal Server Error")
 			}
 
-			// Return from handler
 			return nil
 		},
 		Views: engine})
