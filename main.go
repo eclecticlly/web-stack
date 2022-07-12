@@ -13,6 +13,7 @@ import (
 	"eclecticlly/web-stack/pkg/env"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/favicon"
 	"github.com/gofiber/fiber/v2/middleware/filesystem"
 )
 
@@ -45,6 +46,10 @@ func Setup() *fiber.App {
 		Root:       http.FS(content),
 		PathPrefix: "static",
 		Browse:     true,
+	}))
+
+	app.Use(favicon.New(favicon.Config{
+		File: "./static/images/favicon.ico",
 	}))
 
 	return app

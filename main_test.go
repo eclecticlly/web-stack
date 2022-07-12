@@ -5,17 +5,16 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/gofiber/fiber/v2"
+	. "github.com/smartystreets/goconvey/convey"
 )
 
-func TestIndexRoute(t *testing.T) {
+func TestHttpRoute(t *testing.T) {
 	// Define a structure for specifying input and output
 	// data of a single test case. This structure is then used
 	// to create a so called test map, which contains all test
 	// cases, that should be run for testing this function
 	tests := []struct {
-		description string
-
 		// Test input
 		route string
 
@@ -25,14 +24,12 @@ func TestIndexRoute(t *testing.T) {
 		expectedBody  string
 	}{
 		{
-			description:   "index route",
 			route:         "/",
 			expectedError: false,
 			expectedCode:  200,
 			expectedBody:  "Hello From Fiber Jet Engine",
 		},
 		{
-			description:   "non existing route",
 			route:         "/i-dont-exist",
 			expectedError: false,
 			expectedCode:  404,
@@ -43,40 +40,42 @@ func TestIndexRoute(t *testing.T) {
 	// Setup the app as it is done in the main function
 	app := Setup()
 
-	// Iterate through test single test cases
-	for _, test := range tests {
-		// Create a new http request with the route
-		// from the test case
-		req, _ := http.NewRequest(
-			"GET",
-			test.route,
-			nil,
-		)
+	Convey("Given the user want to navigate the site", t, func() {
 
-		// Perform the request plain with the app.
-		// The -1 disables request latency.
-		res, err := app.Test(req, -1)
+		Convey("When the user go to Home page", func() {
+			res, body, err := route(app, tests[0].route)
 
-		// verify that no error occured, that is not expected
-		assert.Equalf(t, test.expectedError, err != nil, test.description)
+			Convey("Then he can read \"Hello From Fiber Jet Engine\"", func() {
+				So(tests[0].expectedError, ShouldEqual, err != nil)
+				So(tests[0].expectedCode, ShouldEqual, res.StatusCode)
+				So(string(body), ShouldContainSubstring, tests[0].expectedBody)
+			})
 
-		// As expected errors lead to broken responses, the next
-		// test case needs to be processed
-		if test.expectedError {
-			continue
-		}
+		})
 
-		// Verify if the status code is as expected
-		assert.Equalf(t, test.expectedCode, res.StatusCode, test.description)
+		Convey("When the use try to go to a non existent page", func() {
+			res, body, err := route(app, tests[1].route)
 
-		// Read the response body
-		body, err := ioutil.ReadAll(res.Body)
+			Convey("Then he can see the 404 page", nil)
+			So(tests[1].expectedError, ShouldEqual, err != nil)
+			So(tests[1].expectedCode, ShouldEqual, res.StatusCode)
+			So(string(body), ShouldContainSubstring, tests[1].expectedBody)
+		})
 
-		// Reading the response body should work everytime, such that
-		// the err variable should be nil
-		assert.Nilf(t, err, test.description)
+	})
 
-		// Verify, that the reponse body contains the expected body
-		assert.Containsf(t, string(body), test.expectedBody, test.description)
-	}
+}
+
+func route(app *fiber.App, url string) (*http.Response, string, error) {
+	req, _ := http.NewRequest(
+		"GET",
+		url,
+		nil,
+	)
+
+	res, err := app.Test(req, -1)
+
+	body, _ := ioutil.ReadAll(res.Body)
+
+	return res, string(body), err
 }
