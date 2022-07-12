@@ -53,6 +53,7 @@ A starting template to work on web projects: webapps, wepsites or apis
 :heavy_check_mark: Easy development workflow with Air;\
 :heavy_check_mark: Authentication out of the box;\
 :heavy_check_mark: Postgres and GORM;\
+:heavy_check_mark: BDD with Goconvey;\
 :heavy_check_mark: Jet Template and Tailwind;
 
 ## :rocket: Technologies ##
@@ -68,7 +69,7 @@ The following tools were used in this project:
 
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [Tailwind standalone CLI](), [Make (pay attantion on Windows)](http://gnuwin32.sourceforge.net/) and [Air](https://github.com/cosmtrek/air) installed.
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [Tailwind standalone CLI](), [Make (pay attantion on Windows)](http://gnuwin32.sourceforge.net/), [Goconvey](http://goconvey.co/) and [Air](https://github.com/cosmtrek/air) installed.
 
 ## :checkered_flag: Starting ##
 
