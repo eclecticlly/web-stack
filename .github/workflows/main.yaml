@@ -21,6 +21,12 @@ jobs:
           go-version: 1.18
       - name: Install golint
         run: go install golang.org/x/lint/golint@latest
+      - name: Install Tailwind CLI
+        run: curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64
+      - name: Give permission
+        run: chmod +x tailwindcss-linux-x64
+      - name: Change script name
+        run: mv tailwindcss-linux-x64 tailwindcss
       - name: Checkout Repo
         uses: actions/checkout@v3
       - name: Build Application
