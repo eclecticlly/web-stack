@@ -10,10 +10,12 @@ import (
 	"github.com/gofiber/fiber/v2/utils"
 )
 
-type HttpRouter struct {
+// HTTPRouter for web route
+type HTTPRouter struct {
 }
 
-func (h HttpRouter) InstallRouter(app *fiber.App) {
+// InstallRouter to export route for the app
+func (h HTTPRouter) InstallRouter(app *fiber.App) {
 	group := app.Group("", cors.New(), csrf.New(csrf.Config{
 		// only to control the switch whether csrf is activated or not
 		Next: func(c *fiber.Ctx) bool {
@@ -31,6 +33,7 @@ func (h HttpRouter) InstallRouter(app *fiber.App) {
 	group.Post("/clicked", controllers.RenderClicked)
 }
 
-func NewHttpRouter() *HttpRouter {
-	return &HttpRouter{}
+// NewHTTPRouter initializer
+func NewHTTPRouter() *HTTPRouter {
+	return &HTTPRouter{}
 }

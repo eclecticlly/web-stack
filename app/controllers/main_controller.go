@@ -11,7 +11,7 @@ func RenderHello(c *fiber.Ctx) error {
 
 }
 
-// Renderclicked is the test to see if htmx works
+// RenderClicked is the test to see if htmx works
 func RenderClicked(c *fiber.Ctx) error {
 	return c.Render("views/htmx.jet", nil)
 }
