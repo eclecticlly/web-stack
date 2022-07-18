@@ -28,6 +28,6 @@ jobs:
       - name: Give permission
         run: chmod +x tailwindcss-linux-x64
       - name: Executing tailwind
-        run: ./tailwindcss-linux-x64 -i ${GITHUB_WORKSPACE}/tailwind.css -o ${GITHUB_WORKSPACE}/static/css/styles.css --minify
+        run: ./tailwindcss-linux-x64 -i tailwind.css -o ./static/css/styles.css --minify
       - name: Build Application
         run: make
