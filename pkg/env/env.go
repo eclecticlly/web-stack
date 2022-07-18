@@ -6,8 +6,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var Env map[string]string
-
+// GetEnv with sensible default
 func GetEnv(key, def string) string {
 	if val, ok := os.LookupEnv(key); ok {
 		return val
@@ -15,6 +14,7 @@ func GetEnv(key, def string) string {
 	return def
 }
 
+// SetupEnvFile if present
 func SetupEnvFile() {
 	env := GetEnv("APP_ENV", "")
 	if env == "" {

@@ -5,10 +5,12 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/limiter"
 )
 
-type ApiRouter struct {
+// APIRouter for REST API
+type APIRouter struct {
 }
 
-func (h ApiRouter) InstallRouter(app *fiber.App) {
+// InstallRouter export outer
+func (h APIRouter) InstallRouter(app *fiber.App) {
 	api := app.Group("/api", limiter.New())
 	api.Get("/", func(ctx *fiber.Ctx) error {
 		return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
@@ -17,6 +19,7 @@ func (h ApiRouter) InstallRouter(app *fiber.App) {
 	})
 }
 
-func NewApiRouter() *ApiRouter {
-	return &ApiRouter{}
+// NewAPIRouter initializer
+func NewAPIRouter() *APIRouter {
+	return &APIRouter{}
 }
