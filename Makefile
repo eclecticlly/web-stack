@@ -25,6 +25,6 @@ test: vet
 
 # TODO: change to test
 build: vet
-	tailwindcss -i ./tailwind.css -o ./static/css/styles.css --minify
+# tailwindcss -i ./tailwind.css -o ./static/css/styles.css --minify
 	go build main.go
 .PHONY:build
