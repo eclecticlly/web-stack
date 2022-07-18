@@ -10,6 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// SetupDatabase connection
 func SetupDatabase() {
 	var err error
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=UTC",

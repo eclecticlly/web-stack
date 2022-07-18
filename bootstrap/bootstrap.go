@@ -15,6 +15,7 @@ import (
 	"github.com/gofiber/template/jet"
 )
 
+// NewApplication initialize application
 func NewApplication(content fs.FS) *fiber.App {
 	env.SetupEnvFile()
 	database.SetupDatabase()
