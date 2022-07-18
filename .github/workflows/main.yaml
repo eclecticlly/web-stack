@@ -28,6 +28,6 @@ jobs:
       - name: Give permission
         run: chmod +x tailwindcss-linux-x64
       - name: Change script name
-        run: mv tailwindcss-linux-x64 $GOBIN/bin/tailwindcss
+        run: mv tailwindcss-linux-x64 $GOBIN/tailwindcss
       - name: Build Application
         run: make
